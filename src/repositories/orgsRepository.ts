@@ -3,4 +3,5 @@ import { OrgCreateInput } from "prisma/generated/models";
 
 export interface OrgsRepository {
     create(data: OrgCreateInput): Promise<Org>;
+    findById(orgId: string): Promise<Org | null>;
 }

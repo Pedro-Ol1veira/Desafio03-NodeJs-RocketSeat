@@ -22,7 +22,7 @@ describe("Create ORG Use Case", () => {
   });
 
   it("Should reject empty address", async () => {
-    expect(
+    await expect(
       sut.execute({
         address: "",
         name: "Minha org",
@@ -32,7 +32,7 @@ describe("Create ORG Use Case", () => {
   });
 
   it("Should reject empty phone", async () => {
-    expect(
+    await expect(
       sut.execute({
         address: "Salvador",
         name: "Minha org",
