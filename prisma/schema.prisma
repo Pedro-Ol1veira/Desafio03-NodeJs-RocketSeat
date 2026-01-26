@@ -17,9 +17,10 @@ model Org {
 }
 
 model Pet {
-  id    String @unique @default(uuid())
-  name  String
-  breed String @default("SRD")
+  id        String  @unique @default(uuid())
+  name      String
+  breed     String  @default("SRD")
+  available Boolean @default(true)
 
   org   Org    @relation(fields: [orgId], references: [id])
   orgId String
