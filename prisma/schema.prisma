@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Org {
+  id      String @unique @default(uuid())
+  name    String
+  phone   String
+  address String
+
+  pets Pet[]
+}
+
+model Pet {
+  id    String @unique @default(uuid())
+  name  String
+  breed String @default("SRD")
+
+  org   Org    @relation(fields: [orgId], references: [id])
+  orgId String
+}

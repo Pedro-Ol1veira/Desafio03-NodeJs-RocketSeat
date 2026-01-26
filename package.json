@@ -1,15 +1,4 @@
 {
-  "devDependencies": {
-    "@types/node": "25.0.10",
-    "tsup": "8.5.1",
-    "tsx": "4.21.0",
-    "typescript": "5.9.3"
-  },
-  "dependencies": {
-    "dotenv": "17.2.3",
-    "fastify": "5.7.2",
-    "zod": "4.3.6"
-  },
   "name": "desafio03-nodejs-rocketseat",
   "version": "1.0.0",
   "description": "Desafio 03 do curso de nodeJs da rocketSeat. API para adoção de animais domesticos.",
@@ -29,5 +18,17 @@
   "bugs": {
     "url": "https://github.com/Pedro-Ol1veira/Desafio03-NodeJs-RocketSeat/issues"
   },
-  "homepage": "https://github.com/Pedro-Ol1veira/Desafio03-NodeJs-RocketSeat#readme"
+  "homepage": "https://github.com/Pedro-Ol1veira/Desafio03-NodeJs-RocketSeat#readme",
+  "devDependencies": {
+    "@types/node": "25.0.10",
+    "prisma": "7.3.0",
+    "tsup": "8.5.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "17.2.3",
+    "fastify": "5.7.2",
+    "zod": "4.3.6"
+  }
 }
