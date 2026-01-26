@@ -7,11 +7,11 @@ import { OrgsRepository } from "../orgsRepository";
 export class InMemoryPetRepository implements PetsRepository {
   public items: Pet[] = [];
 
-  constructor(private orgsRepository: OrgsRepository) {}
+  constructor(private orgsRepository?: OrgsRepository) {}
   
   async create(data: PetUncheckedCreateInput): Promise<Pet> {
     const pet = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       name: data.name,
       breed: data.breed,
       orgId: data.orgId,
@@ -29,11 +29,19 @@ export class InMemoryPetRepository implements PetsRepository {
     for(const pet of this.items) {
       if(!pet.available) continue;
 
-      const org = await this.orgsRepository.findById(pet.orgId);
+      const org = await this.orgsRepository?.findById(pet.orgId);
 
       if(org.address === address) pets.push(pet);
     }
 
     return pets;
+  }
+
+  async findById(petId: string): Promise<Pet | null> {
+    const pet = this.items.find(item => item.id == petId);
+
+    if(!pet) return null;
+
+    return pet;
   }
 }
