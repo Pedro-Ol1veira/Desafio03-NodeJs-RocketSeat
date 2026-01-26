@@ -19,6 +19,10 @@ export class CreateOrgUseCase {
     name,
     phone,
   }: createOrgUseCaseRequest): Promise<createOrgUseCaseResponse> {
+
+    if(!address) throw new Error("Endereço obrigatorio");
+    if(!phone) throw new Error("Telefone obrigatorio");
+    
     const org = await this.orgsRepository.create({
       address,
       name,
