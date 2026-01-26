@@ -48,6 +48,12 @@ describe("List All Pets In The City Use Case", () => {
         available: true
     });
 
+    await petsRepository.create({
+        name: "pet3",
+        orgId: "org-01",
+        available: false
+    });
+
     const { pets } = await sut.execute({ city: "salvador"});
     
     expect(pets).toHaveLength(1);
