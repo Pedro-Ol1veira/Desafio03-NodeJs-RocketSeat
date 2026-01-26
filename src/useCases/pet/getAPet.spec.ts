@@ -28,7 +28,7 @@ describe("Get A Unique Pet Use Case", () => {
         orgId: "org-01",
         available: true,
         age: 1,
-        port: 'MEDIUM'
+        size: 'MEDIUM'
     });
 
     

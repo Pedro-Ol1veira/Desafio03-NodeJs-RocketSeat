@@ -1,9 +1,12 @@
 import { Pet } from "prisma/generated/client";
-import { PetsRepository } from "@/repositories/petsRepository";
+import { PetsRepository, Query } from "@/repositories/petsRepository";
 import { OrgsRepository } from "@/repositories/orgsRepository";
+
+
 
 interface listAllAvailableInCityUseCaseRequest {
   city: string;
+  query: Query;
 }
 
 interface listAllAvailableInCityUseCaseResponse {
@@ -18,9 +21,10 @@ export class listAllAvailableInCityUseCase {
 
   async execute({
     city,
+    query
   }: listAllAvailableInCityUseCaseRequest): Promise<listAllAvailableInCityUseCaseResponse> {
 
-    const pets = await this.petsRepository.findManyAvailable(city);
+    const pets = await this.petsRepository.findManyAvailable(city, query);
 
     return { pets };
   }

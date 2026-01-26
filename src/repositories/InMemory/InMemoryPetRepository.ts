@@ -1,7 +1,7 @@
 import { Pet } from "prisma/generated/client";
 import { PetUncheckedCreateInput } from "prisma/generated/models";
 import { randomUUID } from "crypto";
-import { PetsRepository } from "../petsRepository";
+import { PetsRepository, Query } from "../petsRepository";
 import { OrgsRepository } from "../orgsRepository";
 
 export class InMemoryPetRepository implements PetsRepository {
@@ -15,6 +15,8 @@ export class InMemoryPetRepository implements PetsRepository {
       name: data.name,
       breed: data.breed,
       orgId: data.orgId,
+      age: data.age,
+      size: data.size,
       available: data.available
     };
 
@@ -23,8 +25,8 @@ export class InMemoryPetRepository implements PetsRepository {
     return pet;
   }
 
-  async findManyAvailable(address: string): Promise<Pet[]> {
-    const pets: Pet[] = [];
+  async findManyAvailable(address: string, query: Query): Promise<Pet[]> {
+    let pets: Pet[] = [];
 
     for(const pet of this.items) {
       if(!pet.available) continue;
@@ -33,6 +35,9 @@ export class InMemoryPetRepository implements PetsRepository {
 
       if(org.address === address) pets.push(pet);
     }
+
+    if(query.age) pets = pets.filter(item => item.age === query.age);
+    if(query.size) pets = pets.filter(item => item.size === query.size);
 
     return pets;
   }
