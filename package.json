@@ -4,7 +4,7 @@
   "description": "Desafio 03 do curso de nodeJs da rocketSeat. API para adoção de animais domesticos.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "dev": "tsx --watch src/server.ts"
   },
   "repository": {
@@ -24,7 +24,9 @@
     "prisma": "7.3.0",
     "tsup": "8.5.1",
     "tsx": "4.21.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vite-tsconfig-paths": "6.0.5",
+    "vitest": "4.0.18"
   },
   "dependencies": {
     "dotenv": "17.2.3",
