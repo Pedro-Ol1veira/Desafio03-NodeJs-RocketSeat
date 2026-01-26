@@ -33,25 +33,33 @@ describe("List All Pets In The City Use Case", () => {
     await petsRepository.create({
         name: "pet1",
         orgId: "org-02",
-        available: true
+        available: true,
+        age: 1,
+        port: 'MEDIUM'
     });
 
     await petsRepository.create({
         name: "pet2",
         orgId: "org-02",
-        available: true
+        available: true,
+        age: 2,
+        port: 'BIG'
     });
 
     await petsRepository.create({
         name: "pet3",
         orgId: "org-01",
-        available: true
+        available: true,
+        age: 4,
+        port: 'MEDIUM'
     });
 
     await petsRepository.create({
         name: "pet3",
         orgId: "org-01",
-        available: false
+        available: false,
+        age: 2,
+        port: 'MEDIUM'
     });
 
     const { pets } = await sut.execute({ city: "salvador"});

@@ -16,11 +16,19 @@ model Org {
   pets Pet[]
 }
 
+enum Port {
+  SMALL
+  MEDIUM
+  BIG
+}
+
 model Pet {
   id        String  @unique @default(uuid())
   name      String
   breed     String  @default("SRD")
   available Boolean @default(true)
+  age       Int
+  port      Port
 
   org   Org    @relation(fields: [orgId], references: [id])
   orgId String

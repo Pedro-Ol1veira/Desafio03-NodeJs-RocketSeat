@@ -10,7 +10,7 @@ let sut: registerPetUseCase;
 describe("Register A Pet Use Case", () => {
   beforeEach(() => {
     orgsRepository = new InMemoryOrgRepository();
-    petsRepository = new InMemoryPetRepository();
+    petsRepository = new InMemoryPetRepository(orgsRepository);
     sut = new registerPetUseCase(petsRepository, orgsRepository);
   });
 
@@ -25,6 +25,8 @@ describe("Register A Pet Use Case", () => {
     const { pet } = await sut.execute({
       name: "meu pet",
       breed: "SRD",
+      age: 3,
+      port: 'SMALL',
       orgId: "org-01",
     });
 
@@ -36,6 +38,8 @@ describe("Register A Pet Use Case", () => {
       sut.execute({
         name: "meu pet",
         breed: "SRD",
+        age: 2,
+        port: 'BIG',
         orgId: "org-01",
       }),
     ).rejects.toBeInstanceOf(Error);
