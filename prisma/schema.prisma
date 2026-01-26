@@ -16,7 +16,7 @@ model Org {
   pets Pet[]
 }
 
-enum Port {
+enum Size {
   SMALL
   MEDIUM
   BIG
@@ -28,7 +28,7 @@ model Pet {
   breed     String  @default("SRD")
   available Boolean @default(true)
   age       Int
-  port      Port
+  size      Size
 
   org   Org    @relation(fields: [orgId], references: [id])
   orgId String
