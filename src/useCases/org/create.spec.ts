@@ -16,6 +16,7 @@ describe("Create ORG Use Case", () => {
       address: "Salvador",
       name: "Minha org",
       phone: "71999999999",
+      email: "teste@example.com"
     });
 
     expect(org.id).toEqual(expect.any(String));
@@ -27,6 +28,7 @@ describe("Create ORG Use Case", () => {
         address: "",
         name: "Minha org",
         phone: "71999999999",
+        email: "teste@example.com"
       }),
     ).rejects.toBeInstanceOf(Error)
   });
@@ -37,6 +39,7 @@ describe("Create ORG Use Case", () => {
         address: "Salvador",
         name: "Minha org",
         phone: "",
+        email: "teste@example.com"
       }),
     ).rejects.toBeInstanceOf(Error)
   });

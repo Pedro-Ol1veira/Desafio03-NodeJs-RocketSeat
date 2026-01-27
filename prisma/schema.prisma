@@ -9,6 +9,7 @@ datasource db {
 
 model Org {
   id      String @unique @default(uuid())
+  email   String @unique
   name    String
   phone   String
   address String

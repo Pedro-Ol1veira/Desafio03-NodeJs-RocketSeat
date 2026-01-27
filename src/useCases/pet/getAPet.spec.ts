@@ -18,6 +18,7 @@ describe("Get A Unique Pet Use Case", () => {
     await orgsRepository.create({
       id: "org-01",
       address: "salvador",
+      email: "teste@example",
       name: "teste",
       phone: "77777777777",
     });

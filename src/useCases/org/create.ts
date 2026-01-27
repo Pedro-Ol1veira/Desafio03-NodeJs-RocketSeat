@@ -5,6 +5,7 @@ interface createOrgUseCaseRequest {
   phone: string;
   name: string;
   address: string;
+  email: string;
 }
 
 interface createOrgUseCaseResponse {
@@ -18,6 +19,7 @@ export class CreateOrgUseCase {
     address,
     name,
     phone,
+    email
   }: createOrgUseCaseRequest): Promise<createOrgUseCaseResponse> {
 
     if(!address) throw new Error("Endereço obrigatorio");
@@ -27,6 +29,7 @@ export class CreateOrgUseCase {
       address,
       name,
       phone,
+      email
     });
 
     return { org };

@@ -21,6 +21,7 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
+      email: "teste@example.com"
     });
 
     await orgsRepository.create({
@@ -28,6 +29,7 @@ describe("List All Pets In The City Use Case", () => {
       address: "sao paulo",
       name: "teste",
       phone: "77777777777",
+      email: "teste1@example.com"
     });
 
     await petsRepository.create({
@@ -79,6 +81,7 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
+      email: "teste@example.com"
     });
 
     await petsRepository.create({
@@ -136,6 +139,7 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
+      email: "teste@example.com"
     });
 
     await petsRepository.create({
@@ -186,6 +190,7 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
+      email: "teste@example.com"
     });
 
     await petsRepository.create({
