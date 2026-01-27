@@ -21,6 +21,7 @@ describe("Get A Unique Pet Use Case", () => {
       email: "teste@example",
       name: "teste",
       phone: "77777777777",
+      password: '123456'
     });
 
     await petsRepository.create({

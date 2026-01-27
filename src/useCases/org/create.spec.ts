@@ -16,7 +16,8 @@ describe("Create ORG Use Case", () => {
       address: "Salvador",
       name: "Minha org",
       phone: "71999999999",
-      email: "teste@example.com"
+      email: "teste@example.com",
+      password: "123456",
     });
 
     expect(org.id).toEqual(expect.any(String));
@@ -28,9 +29,10 @@ describe("Create ORG Use Case", () => {
         address: "",
         name: "Minha org",
         phone: "71999999999",
-        email: "teste@example.com"
+        email: "teste@example.com",
+        password: "123456",
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(Error);
   });
 
   it("Should reject empty phone", async () => {
@@ -39,8 +41,9 @@ describe("Create ORG Use Case", () => {
         address: "Salvador",
         name: "Minha org",
         phone: "",
-        email: "teste@example.com"
+        email: "teste@example.com",
+        password: '123456'
       }),
-    ).rejects.toBeInstanceOf(Error)
+    ).rejects.toBeInstanceOf(Error);
   });
 });

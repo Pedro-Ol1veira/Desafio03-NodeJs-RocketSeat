@@ -21,7 +21,8 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
-      email: "teste@example.com"
+      email: "teste@example.com",
+      password: '123456'
     });
 
     await orgsRepository.create({
@@ -29,50 +30,50 @@ describe("List All Pets In The City Use Case", () => {
       address: "sao paulo",
       name: "teste",
       phone: "77777777777",
-      email: "teste1@example.com"
+      email: "teste1@example.com",
+      password: '123456'
     });
 
     await petsRepository.create({
-        name: "pet1",
-        orgId: "org-02",
-        available: true,
-        age: 1,
-        size: 'MEDIUM'
+      name: "pet1",
+      orgId: "org-02",
+      available: true,
+      age: 1,
+      size: "MEDIUM",
     });
 
     await petsRepository.create({
-        name: "pet2",
-        orgId: "org-02",
-        available: true,
-        age: 2,
-        size: 'BIG'
+      name: "pet2",
+      orgId: "org-02",
+      available: true,
+      age: 2,
+      size: "BIG",
     });
 
     await petsRepository.create({
-        name: "pet3",
-        orgId: "org-01",
-        available: true,
-        age: 4,
-        size: 'MEDIUM'
+      name: "pet3",
+      orgId: "org-01",
+      available: true,
+      age: 4,
+      size: "MEDIUM",
     });
 
     await petsRepository.create({
-        name: "pet3",
-        orgId: "org-01",
-        available: false,
-        age: 2,
-        size: 'MEDIUM'
+      name: "pet3",
+      orgId: "org-01",
+      available: false,
+      age: 2,
+      size: "MEDIUM",
     });
 
-    const { pets } = await sut.execute({ city: "salvador", query: {}});
-    
+    const { pets } = await sut.execute({ city: "salvador", query: {} });
+
     expect(pets).toHaveLength(1);
     expect(pets).toEqual([
-        expect.objectContaining({
-            name: 'pet3'
-        })
+      expect.objectContaining({
+        name: "pet3",
+      }),
     ]);
-
   });
 
   it("Should get all available pets in the city with age filter", async () => {
@@ -81,56 +82,58 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
-      email: "teste@example.com"
+      email: "teste@example.com",
+      password: '123456'
     });
 
     await petsRepository.create({
-        name: "pet1",
-        orgId: "org-01",
-        available: true,
-        age: 1,
-        size: 'MEDIUM'
+      name: "pet1",
+      orgId: "org-01",
+      available: true,
+      age: 1,
+      size: "MEDIUM",
     });
 
     await petsRepository.create({
-        name: "pet2",
-        orgId: "org-01",
-        available: true,
+      name: "pet2",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "BIG",
+    });
+
+    await petsRepository.create({
+      name: "pet3",
+      orgId: "org-01",
+      available: true,
+      age: 4,
+      size: "MEDIUM",
+    });
+
+    await petsRepository.create({
+      name: "pet4",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "MEDIUM",
+    });
+
+    const { pets } = await sut.execute({
+      city: "salvador",
+      query: {
         age: 2,
-        size: 'BIG'
+      },
     });
 
-    await petsRepository.create({
-        name: "pet3",
-        orgId: "org-01",
-        available: true,
-        age: 4,
-        size: 'MEDIUM'
-    });
-
-    await petsRepository.create({
-        name: "pet4",
-        orgId: "org-01",
-        available: true,
-        age: 2,
-        size: 'MEDIUM'
-    });
-
-    
-    const { pets } = await sut.execute({ city: "salvador", query: {
-      age: 2
-    }});
-    
     expect(pets).toHaveLength(2);
     expect(pets).toEqual([
-        expect.objectContaining({
-            name: 'pet2'
-        }),
-        expect.objectContaining({
-            name: 'pet4'
-        }),
+      expect.objectContaining({
+        name: "pet2",
+      }),
+      expect.objectContaining({
+        name: "pet4",
+      }),
     ]);
-
   });
 
   it("Should get all available pets in the city with size filter", async () => {
@@ -139,49 +142,50 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
-      email: "teste@example.com"
+      email: "teste@example.com",
+      password: '123456'
     });
 
     await petsRepository.create({
-        name: "pet1",
-        orgId: "org-01",
-        available: true,
-        age: 1,
-        size: 'MEDIUM'
+      name: "pet1",
+      orgId: "org-01",
+      available: true,
+      age: 1,
+      size: "MEDIUM",
     });
 
     await petsRepository.create({
-        name: "pet2",
-        orgId: "org-01",
-        available: true,
-        age: 2,
-        size: 'BIG'
+      name: "pet2",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "BIG",
     });
 
     await petsRepository.create({
-        name: "pet4",
-        orgId: "org-01",
-        available: true,
-        age: 2,
-        size: 'MEDIUM'
+      name: "pet4",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "MEDIUM",
     });
 
-    
-    const { pets } = await sut.execute({ city: "salvador", query: {
-      size: 'MEDIUM',
-      
-    }});
-    
+    const { pets } = await sut.execute({
+      city: "salvador",
+      query: {
+        size: "MEDIUM",
+      },
+    });
+
     expect(pets).toHaveLength(2);
     expect(pets).toEqual([
-        expect.objectContaining({
-            name: 'pet1'
-        }),
-        expect.objectContaining({
-            name: 'pet4'
-        }),
+      expect.objectContaining({
+        name: "pet1",
+      }),
+      expect.objectContaining({
+        name: "pet4",
+      }),
     ]);
-
   });
 
   it("Should get all available pets in the city with size and age filter", async () => {
@@ -190,46 +194,47 @@ describe("List All Pets In The City Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
-      email: "teste@example.com"
+      email: "teste@example.com",
+      password: '123456'
     });
 
     await petsRepository.create({
-        name: "pet1",
-        orgId: "org-01",
-        available: true,
+      name: "pet1",
+      orgId: "org-01",
+      available: true,
+      age: 1,
+      size: "MEDIUM",
+    });
+
+    await petsRepository.create({
+      name: "pet2",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "BIG",
+    });
+
+    await petsRepository.create({
+      name: "pet4",
+      orgId: "org-01",
+      available: true,
+      age: 2,
+      size: "MEDIUM",
+    });
+
+    const { pets } = await sut.execute({
+      city: "salvador",
+      query: {
+        size: "MEDIUM",
         age: 1,
-        size: 'MEDIUM'
+      },
     });
 
-    await petsRepository.create({
-        name: "pet2",
-        orgId: "org-01",
-        available: true,
-        age: 2,
-        size: 'BIG'
-    });
-
-    await petsRepository.create({
-        name: "pet4",
-        orgId: "org-01",
-        available: true,
-        age: 2,
-        size: 'MEDIUM'
-    });
-
-    
-    const { pets } = await sut.execute({ city: "salvador", query: {
-      size: 'MEDIUM',
-      age: 1
-    }});
-    
     expect(pets).toHaveLength(1);
     expect(pets).toEqual([
-        expect.objectContaining({
-            name: 'pet1'
-        }),
+      expect.objectContaining({
+        name: "pet1",
+      }),
     ]);
-
   });
-
 });
