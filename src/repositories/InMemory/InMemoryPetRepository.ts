@@ -49,4 +49,12 @@ export class InMemoryPetRepository implements PetsRepository {
 
     return pet;
   }
+
+  async adoptAPet(petID: string): Promise<Pet> {
+    const petIndex = this.items.findIndex(item => item.id === petID);
+
+    if(petIndex >= 0) this.items[petIndex].available = false;
+
+    return this.items[petIndex];
+  }
 }
