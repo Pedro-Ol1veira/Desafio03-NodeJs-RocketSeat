@@ -21,6 +21,8 @@ export class getAPetUseCase {
 
     const pet = await this.petsRepository.findById(petId);
 
+    if(!pet) throw new Error("Not Found");
+
     return { pet };
   }
 }

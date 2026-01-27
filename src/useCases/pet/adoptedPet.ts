@@ -25,6 +25,9 @@ export class adoptedPetUseCase {
     const org = await this.orgsRepository.findById(orgId);
     const pet = await this.petsRepository.findById(petId);
 
+    if(!org) throw new Error("Org Not Found");
+    if(!pet) throw new Error("Pet Not Found");
+    
     if(org.id != pet.orgId) throw new Error("Unouthorized!");
 
     const adoptedPet = await this.petsRepository.adoptAPet(pet.id);

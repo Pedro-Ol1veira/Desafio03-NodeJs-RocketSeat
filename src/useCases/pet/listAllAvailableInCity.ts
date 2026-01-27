@@ -16,7 +16,6 @@ interface listAllAvailableInCityUseCaseResponse {
 export class listAllAvailableInCityUseCase {
   constructor(
     private petsRepository: PetsRepository,
-    private orgsRepository: OrgsRepository,
   ) {}
 
   async execute({
