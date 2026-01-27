@@ -7,7 +7,7 @@ interface registerPetUseCaseRequest {
   breed: string;
   orgId: string;
   age: number;
-  port: 'SMALL' | 'MEDIUM' | 'BIG';
+  size: 'SMALL' | 'MEDIUM' | 'BIG';
 }
 
 interface registerPetUseCaseResponse {
@@ -24,7 +24,7 @@ export class registerPetUseCase {
     breed,
     orgId,
     age,
-    port
+    size
   }: registerPetUseCaseRequest): Promise<registerPetUseCaseResponse> {
     
     const org = await this.orgsRepository.findById(orgId);
@@ -37,7 +37,7 @@ export class registerPetUseCase {
       name,
       breed,
       age,
-      port,
+      size,
       orgId: orgId,
     });
 

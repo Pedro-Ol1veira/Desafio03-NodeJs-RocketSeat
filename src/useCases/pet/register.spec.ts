@@ -20,13 +20,15 @@ describe("Register A Pet Use Case", () => {
       address: "salvador",
       name: "teste",
       phone: "77777777777",
+      email: "teste@example.com",
+      password: '123456'
     });
 
     const { pet } = await sut.execute({
       name: "meu pet",
       breed: "SRD",
       age: 3,
-      port: 'SMALL',
+      size: 'SMALL',
       orgId: "org-01",
     });
 
@@ -39,7 +41,7 @@ describe("Register A Pet Use Case", () => {
         name: "meu pet",
         breed: "SRD",
         age: 2,
-        port: 'BIG',
+        size: 'BIG',
         orgId: "org-01",
       }),
     ).rejects.toBeInstanceOf(Error);
