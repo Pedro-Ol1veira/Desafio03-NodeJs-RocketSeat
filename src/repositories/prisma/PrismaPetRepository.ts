@@ -46,7 +46,7 @@ export class PrismaPetRepository implements PetsRepository {
                 id: petID
             },
             data: {
-                available: true
+                available: false
             }
         });
 
