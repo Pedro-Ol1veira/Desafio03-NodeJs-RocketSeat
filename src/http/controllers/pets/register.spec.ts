@@ -2,7 +2,7 @@ import { app } from "@/app";
 import { expect, it, describe, beforeAll, afterAll } from "vitest";
 import request from 'supertest';
 
-describe("Create (e2e)", () => {
+describe("register (e2e)", () => {
     beforeAll(async () => {
         await app.ready();
     });
@@ -11,7 +11,7 @@ describe("Create (e2e)", () => {
         await app.close();
     });
 
-    it("Should be able to create a ORG", async () => {
+    it("Should be able to register a Pet", async () => {
         await request(app.server).post("/orgs").send({
             address: "Salvador",
             name: "Minha org",

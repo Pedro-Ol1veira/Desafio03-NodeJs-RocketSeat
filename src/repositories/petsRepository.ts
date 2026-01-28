@@ -2,8 +2,8 @@ import { Pet } from "prisma/generated/client";
 import { PetUncheckedCreateInput } from "prisma/generated/models";
 
 export interface Query {
-  age?: number;
-  size?: 'SMALL' | 'MEDIUM' | 'BIG';
+  age: number | undefined;
+  size: 'SMALL' | 'MEDIUM' | 'BIG' | undefined;
 } 
 
 export interface PetsRepository {
